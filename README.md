@@ -29,6 +29,8 @@ This repository hosts the source code for an automated vehicle service contract 
 - Dependency Injection
 - Asynchronous Programming Patterns
 - DTO (Data Transfer Objects)
+- PDFservice
+- Excel Service
 ## 
 This system combines the power of MVC architecture, repository pattern, and DTOs to deliver a robust and efficient solution for managing vehicle service contracts. With seamless integration of external services and comprehensive management modules, it offers a user-friendly interface and reliable performance, ensuring streamlined operation and enhanced productivity.
 
