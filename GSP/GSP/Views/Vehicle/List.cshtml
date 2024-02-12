@@ -1,0 +1,63 @@
+﻿@* @using static GSP.Pagination; *@
+@model List<GSP.Models.ViewModels.VehicleViewModel>
+
+
+@{
+    ViewData["Title"] = "List of Vehicles";
+}
+
+
+<div class="container py-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @* <button class="btn btn-sm btn-dark mb-3" onclick="printTable()"><i class="fa fa-print"></i> Print Table</button> *@
+    
+    @if (Model != null && Model.Any())
+    {
+        <div id="printSection">
+            <table class="table table-bordered" id="vehicleTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Encryted Id</th>
+                        @*<th>Model Name</th> *@
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <th>Action</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var vehicle in Model)
+                    {
+                        <tr>
+                            <td>@vehicle.Id</td>
+                            <td>@vehicle.Name</td>
+                            <td>@EncryptionHelper.Encrypt(vehicle.BrandId)</td>
+                           @*  <td>@vehicle.BrandName</td> *@
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    <a asp-area=""
+                                    asp-controller="Vehicle"
+                                    asp-action="Edit"
+                                    asp-route-id="@vehicle.Id"> Edit</a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+       
+    }
+    else
+    {
+        <p> No Vehicles Found</p>
+    }
+</div>

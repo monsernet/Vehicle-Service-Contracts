@@ -1,0 +1,43 @@
+﻿@model GSP.Models.ViewModels.AddGeniumPartRequest
+@{
+    ViewData["Title"] = "Add Bulk Service Parts";
+}
+
+<div class="container py-3">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data" asp-controller="GeniumPart" asp-action="UploadExcel">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VehicleId, "Select Vehicle")
+                    @Html.DropDownListFor(m => m.VehicleId, (IEnumerable<SelectListItem>)ViewBag.Vehicles, "Select a Vehicle", new { @class = "form-control" , required="required" })
+                    @Html.ValidationMessageFor(m => m.VehicleId)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VehicleTypeId, "Select Vehicle Type")
+                    @Html.DropDownListFor(m => m.VehicleTypeId, (IEnumerable<SelectListItem>)ViewBag.VehicleTypes, "Select a Vehicle Type", new { @class = "form-control" , required="required" })
+                    @Html.ValidationMessageFor(m => m.VehicleTypeId)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                @Html.HiddenFor(m => m.VehicleId)
+                @Html.HiddenFor(m => m.VehicleTypeId)
+                <div class="form-group">
+                    <label for="file">Choose Excel File</label>
+                    <input type="file" name="file" id="file" class="form-control" accept=".xlsx" required />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-sm btn-primary col-sm-6"><i class="fa fa-plus"></i>  Upload</button>
+            </div>
+        </div>
+    </form>
+    
+</div>

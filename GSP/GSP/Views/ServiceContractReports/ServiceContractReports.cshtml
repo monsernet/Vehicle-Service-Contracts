@@ -1,0 +1,168 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@model GSP.Models.ViewModels.ServiceContractReportsViewModel
+@{
+    ViewData["Title"] = "Service Contract Reports";
+    Dictionary<string, string> userCache = new Dictionary<string, string>();
+}
+
+<div class="container py-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="card border border-primary">
+                <div class="card-header bg-primary border-primary"><h5>Daily Reports</h5></div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contract Reference</th>
+                                <th>Customer Name</th>
+                                <th>Vehicle Type</th>
+                                <th>Registration Number</th>
+                                <th>Duration</th>
+                                <th>Cost</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var contract in Model.DailyReports)
+                            {
+                                if (!userCache.ContainsKey(contract.UserId))
+                                {
+                                    var user = await UserManager.FindByIdAsync(contract.UserId);
+                                    if (user != null)
+                                    {
+                                        userCache[contract.UserId] = user.FirstName + " " + user.LastName;
+                                    }
+                                }
+                                var userFullName = userCache[contract.UserId];
+                                <tr>
+                                    <td>@contract.Reference</td>
+                                    <td>@contract.CustomerId</td>
+                                    <td>@contract.VehicleCaption </td>
+                                    <td>@contract.RegistrationNumber</td>
+                                    <td>@contract.ContractDuration years</td>
+                                    <td>@contract.TotalCost.ToString("F3") KWD</td>
+                                    <td>@userFullName</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer border-secondary text-end">
+                    <h5><strong>Total Amount: </strong>@Model.DailyReports.Sum(c => c.TotalCost).ToString("F3") KWD</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card border border-primary">
+                <div class="card-header bg-primary border-primary">
+                    <h5>Weekly Reports</h5><h6 class="text-light">
+                    @Model.WeeklyReportStartDate.ToString("dddd, MMMM dd, yyyy")
+                    -
+                    @Model.WeeklyReportEndDate.ToString("dddd, MMMM dd, yyyy")
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contract Reference</th>
+                                <th>Customer Name</th>
+                                <th>Vehicle Type</th>
+                                <th>Registration Number</th>
+                                <th>Duration</th>
+                                <th>Cost</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var contract in Model.WeeklyReports)
+                            {
+                                if (!userCache.ContainsKey(contract.UserId))
+                                {
+                                    var user = await UserManager.FindByIdAsync(contract.UserId);
+                                    if (user != null)
+                                    {
+                                        userCache[contract.UserId] = user.FirstName + " " + user.LastName;
+                                    }
+                                }
+                                var userFullName = userCache[contract.UserId];
+                                <tr>
+                                    <td>@contract.Reference</td>
+                                    <td>@contract.CustomerId</td>
+                                    <td>@contract.VehicleCaption </td>
+                                    <td>@contract.RegistrationNumber</td>
+                                    <td>@contract.ContractDuration years</td>
+                                    <td>@contract.TotalCost.ToString("F3") KWD</td>
+                                    <td>@userFullName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer  text-end">
+                    <h5 ><strong>Total Amount: </strong>@Model.WeeklyReports.Sum(c => c.TotalCost).ToString("F3") KWD</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card border border-primary">
+                <div class="card-header bg-primary border-primary"><h5>Monthly Reports</h5>
+                    <h6 class="text-light">
+                        @Model.MonthlyReportStartDate.ToString("dddd, MMMM dd, yyyy")
+                        -
+                        @Model.MonthlyReportEndDate.ToString("dddd, MMMM dd, yyyy")
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contract Reference</th>
+                                <th>Customer Name</th>
+                                <th>Vehicle Type</th>
+                                <th>Registration Number</th>
+                                <th>Duration</th>
+                                <th>Cost</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            @foreach (var contract in Model.MonthlyReports)
+                            {
+                                if (!userCache.ContainsKey(contract.UserId))
+                                {
+                                    var user = await UserManager.FindByIdAsync(contract.UserId);
+                                    if (user != null)
+                                    {
+                                        userCache[contract.UserId] = user.FirstName + " " + user.LastName;
+                                    }
+                                }
+                                var userFullName = userCache[contract.UserId];
+                                <tr>
+                                    <td>@contract.Reference</td>
+                                    <td>@contract.CustomerId</td>
+                                    <td>@contract.VehicleCaption </td>
+                                    <td>@contract.RegistrationNumber</td>
+                                    <td>@contract.ContractDuration years</td>
+                                    <td>@contract.TotalCost.ToString("F3") KWD</td>
+                                    <td>@userFullName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer  text-end">
+                    <h5><strong>Total Amount: </strong>@Model.MonthlyReports.Sum(c => c.TotalCost).ToString("F3") KWD</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

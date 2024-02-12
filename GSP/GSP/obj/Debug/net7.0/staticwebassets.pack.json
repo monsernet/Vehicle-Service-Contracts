@@ -1,0 +1,797 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\GSP.bundle.scp.css",
+      "PackagePath": "staticwebassets\\GSP.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\adminlte.css",
+      "PackagePath": "staticwebassets\\css\\adminlte.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\adminlte.css.map",
+      "PackagePath": "staticwebassets\\css\\adminlte.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\adminlte.min.css",
+      "PackagePath": "staticwebassets\\css\\adminlte.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\adminlte.min.css.map",
+      "PackagePath": "staticwebassets\\css\\adminlte.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.components.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.components.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.components.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.components.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.components.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.components.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.components.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.components.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.core.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.core.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.core.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.core.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.core.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.core.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.core.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.core.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.extra-components.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.extra-components.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.extra-components.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.extra-components.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.extra-components.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.extra-components.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.extra-components.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.extra-components.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.light.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.light.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.light.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.light.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.light.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.light.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.light.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.light.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.pages.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.pages.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.pages.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.pages.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.pages.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.pages.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.pages.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.pages.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.plugins.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.plugins.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.plugins.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.plugins.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.plugins.min.css",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.plugins.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\alt\\adminlte.plugins.min.css.map",
+      "PackagePath": "staticwebassets\\css\\alt\\adminlte.plugins.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\homeStyle.css",
+      "PackagePath": "staticwebassets\\css\\homeStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\OFL.txt",
+      "PackagePath": "staticwebassets\\fonts\\OFL.txt"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-Bold.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-BoldItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-Italic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-Italic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-Light.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-Light.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-LightItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-LightItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-Regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-Regular.woff",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-Regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\fonts\\RobotoCondensed-regular.woff2",
+      "PackagePath": "staticwebassets\\fonts\\RobotoCondensed-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\AdminLTELogo.png",
+      "PackagePath": "staticwebassets\\img\\AdminLTELogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\boxed-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\boxed-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\boxed-bg.png",
+      "PackagePath": "staticwebassets\\img\\boxed-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\default-150x150.png",
+      "PackagePath": "staticwebassets\\img\\default-150x150.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\footer1.png",
+      "PackagePath": "staticwebassets\\img\\footer1.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\gmcLogo.jpg",
+      "PackagePath": "staticwebassets\\img\\gmcLogo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\header1.png",
+      "PackagePath": "staticwebassets\\img\\header1.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\icons.png",
+      "PackagePath": "staticwebassets\\img\\icons.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\img\\serviceback.jpg",
+      "PackagePath": "staticwebassets\\img\\serviceback.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\.eslintrc.json",
+      "PackagePath": "staticwebassets\\js\\.eslintrc.json"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\adminlte.js",
+      "PackagePath": "staticwebassets\\js\\adminlte.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\adminlte.js.map",
+      "PackagePath": "staticwebassets\\js\\adminlte.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\adminlte.min.js",
+      "PackagePath": "staticwebassets\\js\\adminlte.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\adminlte.min.js.map",
+      "PackagePath": "staticwebassets\\js\\adminlte.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\pages\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\pages\\dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\pages\\dashboard2.js",
+      "PackagePath": "staticwebassets\\js\\pages\\dashboard2.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\pages\\dashboard3.js",
+      "PackagePath": "staticwebassets\\js\\pages\\dashboard3.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\js\\scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-bs4\\css\\dataTables.bootstrap4.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-bs4\\css\\dataTables.bootstrap4.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-bs4\\css\\dataTables.bootstrap4.min.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-bs4\\css\\dataTables.bootstrap4.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-bs4\\js\\dataTables.bootstrap4.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-bs4\\js\\dataTables.bootstrap4.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-bs4\\js\\dataTables.bootstrap4.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-bs4\\js\\dataTables.bootstrap4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\css\\buttons.bootstrap4.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\css\\buttons.bootstrap4.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\css\\buttons.bootstrap4.min.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\css\\buttons.bootstrap4.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.bootstrap4.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.bootstrap4.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.bootstrap4.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.bootstrap4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.colVis.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.colVis.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.colVis.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.colVis.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.flash.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.flash.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.flash.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.flash.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.html5.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.html5.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.html5.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.html5.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.print.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.print.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\buttons.print.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\buttons.print.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\dataTables.buttons.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\dataTables.buttons.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-buttons\\js\\dataTables.buttons.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-buttons\\js\\dataTables.buttons.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\css\\responsive.bootstrap4.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\css\\responsive.bootstrap4.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\css\\responsive.bootstrap4.min.css",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\css\\responsive.bootstrap4.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\js\\dataTables.responsive.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\js\\dataTables.responsive.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\js\\dataTables.responsive.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\js\\dataTables.responsive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\js\\responsive.bootstrap4.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\js\\responsive.bootstrap4.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables-responsive\\js\\responsive.bootstrap4.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables-responsive\\js\\responsive.bootstrap4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables\\jquery.dataTables.js",
+      "PackagePath": "staticwebassets\\lib\\datatables\\jquery.dataTables.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\datatables\\jquery.dataTables.min.js",
+      "PackagePath": "staticwebassets\\lib\\datatables\\jquery.dataTables.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\all.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\all.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\all.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\brands.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\brands.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\brands.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\fontawesome.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\regular.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\regular.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\regular.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\solid.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\solid.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\solid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\v4-shims.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\v4-shims.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\css\\v4-shims.min.css",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\css\\v4-shims.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-brands-400.svg",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-brands-400.svg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-regular-400.eot"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-regular-400.svg",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-regular-400.svg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-regular-400.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-solid-900.eot"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-solid-900.svg",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-solid-900.svg"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-solid-900.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\fontawesome-free\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\lib\\fontawesome-free\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\html2canvas\\html2canvas.min.js",
+      "PackagePath": "staticwebassets\\lib\\html2canvas\\html2canvas.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.es.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.es.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.es.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.es.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.es.min.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.es.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.es.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.es.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.node.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.node.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.node.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.node.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.node.min.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.node.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.node.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.node.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.umd.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.umd.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.umd.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.umd.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.umd.min.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.umd.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\jspdf.umd.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\jspdf.umd.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\polyfills.es.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\polyfills.es.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jspdf\\polyfills.umd.js",
+      "PackagePath": "staticwebassets\\lib\\jspdf\\polyfills.umd.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jszip\\jszip.js",
+      "PackagePath": "staticwebassets\\lib\\jszip\\jszip.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\jszip\\jszip.min.js",
+      "PackagePath": "staticwebassets\\lib\\jszip\\jszip.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\pdfmake\\pdfmake.js",
+      "PackagePath": "staticwebassets\\lib\\pdfmake\\pdfmake.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\pdfmake\\pdfmake.js.map",
+      "PackagePath": "staticwebassets\\lib\\pdfmake\\pdfmake.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\pdfmake\\pdfmake.min.js",
+      "PackagePath": "staticwebassets\\lib\\pdfmake\\pdfmake.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\pdfmake\\pdfmake.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\pdfmake\\pdfmake.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell\\Dropbox\\Applications\\GSP\\22-----06-02-2024\\GSP\\GSP\\GSP\\wwwroot\\lib\\pdfmake\\vfs_fonts.js",
+      "PackagePath": "staticwebassets\\lib\\pdfmake\\vfs_fonts.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.GSP.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.GSP.props",
+      "PackagePath": "build\\GSP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.GSP.props",
+      "PackagePath": "buildMultiTargeting\\GSP.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.GSP.props",
+      "PackagePath": "buildTransitive\\GSP.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

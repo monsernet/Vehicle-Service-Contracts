@@ -1,0 +1,189 @@
+﻿
+@model GSP.Models.ViewModels.AddServiceContractRequest
+@{
+    ViewData["Title"] = "Add New Service Contract";
+}
+
+<div class="container py-3">
+    <form method="post">
+        <div class="row mt-4">
+            <!-- List of Service Costs  -->
+            <div class="form-group col-md-4">
+                <h6><u>Customer Information</u></h6>
+                <div class="card">
+                    <div class="row">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CustomerId, "Select Customer")
+                            @Html.DropDownListFor(m => m.CustomerId, (IEnumerable<SelectListItem>)ViewBag.Customers, "Select a Customer", new { @class = "form-control", required="required", id = "SC_customerId"  })
+                            @Html.ValidationMessageFor(m => m.CustomerId)
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label-sm">Customer Full Name</label>
+                            <input type="text" class="form-control " id="SC_CustomerName" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label-sm">Civil Id Number</label>
+                            <input type="text" class="form-control" id="SC_CivilId" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label-sm">Phone Number</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"> +965</span>
+                                </div>
+                                <input type="text" class="form-control" id="SC_Phone" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label-sm">Email</label>
+                            <input type="text" class="form-control" id="SC_Email" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-form-label-sm">Email</label>
+                            <textarea class="form-control" id="SC_Address"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contract Details     -->
+
+            <div class="form-group col-md-8">
+                <h6><u>Contract Details </u></h6>
+                <div class="card">
+                    <div class="row m-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Contract Number</label>
+                                <input type="text" class="form-control" value="@ViewBag.ContractCount" />
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="form-label">Contract Caption</label>
+                                <input type="text" class="form-control" value="@ViewBag.PackageCaption" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Starting Mileage</label>
+                                <input type="text" class="form-control" value="@ViewBag.StartMileage" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Ending Mileage</label>
+                                <input type="text" class="form-control" value="@ViewBag.EndMileage" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Total Cost</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" value="@ViewBag.TotalPackageCost" required />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"> KD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Vehicle Name</label>
+                                <input type="text" class="form-control" value="@ViewBag.VehicleName" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.VinNumber, "Vin Number")
+                                @Html.TextBoxFor(m => m.VinNumber, new { @class = "form-control", required="required" })
+                                @Html.ValidationMessageFor(m => m.VinNumber)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ModelYear, "Model Year")
+                                @Html.TextBoxFor(m => m.VehicleCaption, new { @class = "form-control", type="number", required="required" })
+                                @Html.ValidationMessageFor(m => m.VehicleCaption)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.RegistrationNumber, "Registration Number")
+                                @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control", required="required" })
+                                @Html.ValidationMessageFor(m => m.RegistrationNumber)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.DeliveryDate, "Delivery Date")
+                                @Html.TextBoxFor(m => m.DeliveryDate, new { @class = "form-control", type="date", required="required" })
+                                @Html.ValidationMessageFor(m => m.DeliveryDate)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ContractDuration, "Contract Duration")
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.ContractDuration, new { @class = "form-control", type="number", min="1", max="10", step="1", required="required" })
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"> Years</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StartDate, "Start Date")
+                                @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", type="date", required="required" })
+                                @Html.ValidationMessageFor(m => m.StartDate)
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ExpiryDate, "Expiry Date")
+                                @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control", type="date", required="required" })
+                                @Html.ValidationMessageFor(m => m.ExpiryDate)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row d-sm-flex justify-content-center mt-3 ">
+            <input type="hidden" />
+            <button type="submit" class="btn btn-sm btn-primary mr-2 col-sm-3"><i class="fa fa-arrow-right"></i>  Save Service Contract</button>
+            <a asp-area=""
+               class="btn btn-sm btn-secondary col-sm-3"
+               asp-controller="VehicleService"
+               asp-action="Edit"
+               asp-route-id="1"> <i class="fa fa-print"></i> Print Contract</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var selectedVehicleName = '@ViewBag.VehicleName';
+        $('#startMileageDropdown').val(selectedVehicleName);
+    });
+</script>

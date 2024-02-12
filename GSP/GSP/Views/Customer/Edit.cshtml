@@ -1,0 +1,38 @@
+﻿@model GSP.Models.ViewModels.EditCustomerRequest
+@{
+    ViewData["Title"] = "Edit Customer Information";
+}
+
+<div class="container py-3">
+    <form method="post">
+        <div class="mb-2">
+            
+            <input type="hidden" id="id" class="form-control" asp-for="Id" readonly />
+        </div>
+        <div class="mb-6">
+            <label class="form-label">Customer Name</label>
+            <input type="text" id="name" class="form-control" asp-for="CustomerName" required />
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Civil Id</label>
+            <input type="text"  class="form-control" asp-for="CivilId" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" asp-for="Phone" required />
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email" required />
+        </div>
+        <div class="mb-5">
+            <label class="form-label">Address</label>
+            <textarea  class="form-control" asp-for="Address" required ></textarea>
+        </div>
+
+        <div class="row d-sm-flex justify-content-center mt-3 ">
+            <button type="submit" class="btn btn-sm btn-success col-sm-3 mr-2 ml-2 mt-2"><i class="fa fa-retweet"></i> Update</button>
+            
+        </div>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+﻿@model List<GSP.Models.Domain.Brand>
+@{
+    ViewData["Title"] = "List of Brands";
+}
+
+<div class="container py-3">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered" id="brandTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <td>Name</td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td></td>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var brand in Model)
+                {
+                    <tr>
+                        <td class="counter"></td>
+                        <td>@brand.Name</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a asp-area=""
+                                asp-controller="Brand"
+                                asp-action="Edit"
+                                asp-route-id="@brand.Id"> Edit</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> No Brands Found</p>
+    }
+</div>
+<script>
+    window.onload = function () {
+      var counterCells = document.querySelectorAll('.counter');
+      for (var i = 0; i < counterCells.length; i++) {
+        counterCells[i].innerText = i + 1;
+      }
+    };
+</script>

@@ -1,0 +1,105 @@
+﻿@model GSP.Models.ViewModels.AddCustomerRequest
+@{
+    ViewData["Title"] = "Add New Customer";
+}
+
+<div class="container py-3">
+
+    <form method="post">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CustomerCode, "Customer Code")
+                    @Html.TextBoxFor(m => m.CustomerCode, new { @class = "form-control", required="required" })
+                    @Html.ValidationMessageFor(m => m.CustomerCode)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CustomerName, "Customer Full Name")
+                    @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control", required="required" })
+                    @Html.ValidationMessageFor(m => m.CustomerName)
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CivilId, "Civil Id Number")
+                    @Html.TextBoxFor(m => m.CivilId, new { @class = "form-control", required="required"  })
+                    @Html.ValidationMessageFor(m => m.CivilId)
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone, "Phone Number")
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> +965</span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", required="required"  })
+                        
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone2, "Phone 2")
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> +965</span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Phone2, new { @class = "form-control",   })
+
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Phone2)
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone3, "Phone 3")
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> +965</span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Phone3, new { @class = "form-control",   })
+
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Phone3)
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone4, "Phone 4")
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"> +965</span>
+                        </div>
+                        @Html.TextBoxFor(m => m.Phone4, new { @class = "form-control",   })
+
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Phone4)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, "Email")
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type="email",  })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, "Address")
+                    @Html.TextAreaFor(m => m.Address, new { @class = "form-control",  })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+            </div>
+
+        </div>
+        <div class="row d-sm-flex justify-content-center mt-3 ">
+            <button type="submit" class="btn btn-sm btn-primary col-sm-6"><i class="fa fa-plus"></i> Add Customer</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,359 @@
+﻿@model GSP.Models.Domain.ServiceContract
+@{
+    var years_en = (@Model.ContractDuration > 1) ? "Years" : "Year";
+    var years_ar = (@Model.ContractDuration > 2) ? "سنوات" : "سنة";
+    var vehFullName = "";
+    var vehName = Model.VehicleCaption;
+    if (vehName.ToLower() == "yukon")
+    {
+        vehFullName = "YUKON ("+@Model.VehicleVariant+")  يوكون";
+    }
+    else if (vehName.ToLower() == "acadia")
+    {
+        vehFullName = "ACADIA (" + @Model.VehicleVariant + ") أكاديا";
+    }
+    else if (vehName.ToLower() == "terrain")
+    {
+        vehFullName = "TERRAIN (" + @Model.VehicleVariant + ")  تيرين";
+    }
+    else if (vehName.ToLower() == "sierra")
+    {
+        vehFullName = "SIERRA (" + @Model.VehicleVariant + ") سييرا";
+    }
+    else if (vehName.ToLower() == "savana")
+    {
+        vehFullName = "SAVANA (" + @Model.VehicleVariant + ")  سافانا";
+    } else
+    {
+        vehFullName = vehName.ToUpper();
+    }
+
+
+    
+}
+
+<div class="container mt-0  card">
+    
+    <div class="card-header printDiv"><button type="button" onclick="printPage()" class="btn btn-secondary btn-print-contract" id="btnPdfContent"><i class="fa fa-print"></i> Print</button></div>
+    <section>
+        <div class="wrapper">
+            <div class="card-body mt-1" id="printArea">
+                <!----------- FIRST PAGE  --------->
+                <header class="headerPrint text-center"><img src="~/img/header1.png" /></header>
+                <div class="page">
+                    <H3 class="text-center mb-5 mt-2">SERVICE CONTRACT FOR GMC VEHICLE (PAGE 1/2)</H3>
+
+                    <div class="row">
+                        <table class="table table-borderless" id="contractDetailsTable">
+                            <tbody>
+                                <tr>
+                                    <td class="label-en">Contract Reference:</td>
+                                    <td class="text-center"><strong>@Model.Reference ( @Model.AddedOn.ToString("dd-MM-yyyy") )</strong></td>
+                                    <td class="label-ar text-end">رقم العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">Customer:</td>
+                                    <td class="text-center"><strong>@ViewBag.CustomerName</strong></td>
+                                    <td class="label-ar text-end">العميل:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">TELEPHONE NO & ADRESS:</td>
+                                    <td class="text-center"><strong>Tel: @ViewBag.CustomerPhone (<small> @ViewBag.CustomerAddress </small>)</strong></td>
+                                    <td dir="rtl" class="text-end ">رقم الهاتف و العنوان:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">VEHICLE TYPE:</td>
+                                    <td class="text-center"><strong>@vehFullName</strong></td>
+                                    <td dir ="rtl" class="text-end"> نوع المركبة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">MODEL YEAR:</td>
+                                    <td class="text-center"><strong>@Model.ModelYear</strong></td>
+                                    <td class="label-ar text-end">سنة الصنع:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">VIN NO:</td>
+                                    <td class="text-center"><strong>@Model.VinNumber</strong></td>
+                                    <td class="label-ar text-end"> رقم القاعدة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">REGISTRATION NO:</td>
+                                    <td class="text-center"><strong>@Model.RegistrationNumber</strong></td>
+                                    <td class="label-ar text-end">رقم اللوحة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">DELIVERY DATE:</td>
+                                    <td class="text-center"><strong>@Model.DeliveryDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">  تاريخ التسليم:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT SUBJECT:</td>
+                                    <td class="text-center"><strong>SERVICE PACKAGE FROM @Model.StartMileage TO @Model.EndMileage <br /><span dir="rtl">حزمة خدمة الصيانة الدورية من @Model.StartMileage إلى @Model.EndMileage </span></strong></td>
+                                    <td class="label-ar text-end"> موضوع العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT DURATION:</td>
+                                    <td class="text-center"><strong>@Model.ContractDuration @years_en (<span dir="rtl">@Model.ContractDuration @years_ar</span>)</strong></td>
+                                    <td class="label-ar text-end"> مدة العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT START DATE:</td>
+                                    <td class="text-center"><strong>@Model.StartDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">تاريخ بداية العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT EXPIRY DATE:</td>
+                                    <td class="text-center"><strong>@Model.ExpiryDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">تاريخ انتهاء العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT TOTAL COST<small>(including parts if any)</small>:</td>
+                                    <td class="text-center"><strong><span class="small" dir="rtl">  د.ك  </span> @Model.TotalCost  <span class="small"> KD </span> </strong></td>
+                                    <td class="label-ar text-end">القيمة الإجمالية للعقد <small>(شاملة قطع الغيار إن وُجدت)</small>:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <p class="text-justify">
+                                TO <strong>@Model.VehicleCaption.ToUpper() </strong> OWNER<BR />
+                                CONGRATULATIONS ON ACQUIRING YOUR NEW GMC VEHICLE.<BR />
+                                THE PERIODIC PREVENTIVE MAINTENANCE FOR YOUR <strong>@Model.VehicleCaption.ToUpper() </strong>
+                                IS ESSENTIAL TO PROVIDE THE HIGHEST SAFETY WORKING LEVELS AND TO INCREASE THE ENGINE LIFE,
+                                ALSO TO DECREASE THE POSSIBLILITY OF SUDDEN MALFUNCTIONS TO THE LOWEST LEVEL POSSIBLE.<BR />
+                                FOR YOUR CONVENIENCE, WE BRING YOU A PREVENTIVE MAINTENANCE SERVICE PROGRAM FOR YOUR  <strong>@Model.VehicleCaption.ToUpper() </strong>.<br />
+                                BASED ON THE STANDARDS SET BY THE FACTORY, THIS PROGRAM WILL GIVE YOU THE CHANCE TO HAVE A CLOSE KNOWLEDGE OF THE HIGH STANDARDS OF
+                                MAINTENANCE AT THE CERTIFIED GMC BEHBEHANI WORKSHOP AND QUICK SERVICE CENTER, TO ASSURE YOU A SMOOTH, CONFORTABLE AND SAFE DRIVING EXPERIENCE.
+                            </p>
+                            <p>
+                                THANK YOU FOR ALLOWING US TO BE OF SERVICE.<br />
+                                Regards
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p dir="rtl" class="text-justify">
+                                <span class="label-ar ">السيد مالك مركبة<strong> @Model.VehicleCaption.ToUpper()</strong></span><br />
+                                الصيانة الوقائية الدورية لمركبة <strong> @Model.VehicleCaption.ToUpper()</strong> ضرورية لتأمين أفضل معايير التشغيل الآمن و من أجل إطالة عمر المركبة و تخفيض نسبة الأعطال الطارئة لأدنى مستوياتها.<br />
+                                و حرصا منا على راحتكم ، فإننا نقدم لكم برنامجا خاصا بكافة خدمات الصيانة الدورية الوقائية وفقا لمقاييس الجودة المعتمدة من المصنع.<br />
+                                و هذا سيتيح لكم التعرف عن قرب على المستويات المتقدمة للأعمال في مراكز الصيانة و الخدمة السريعة المعتمدة لمركبات جي ام سي بهبهاني، مما يضمن لكم الاستمتاع بقيادة سلسة و مريحة.<br />
+                            <p>
+                                لكم منا الشكر  الجزيل على منحنا هذه الفرصة لخدمتكم.<br />
+                                مع أطيب التحيات
+                            </p>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="row mt-3 ">
+                        <table class="table table-borderless" id="contractDetailsSignature">
+                            <tbody>
+                                <tr>
+                                    <th class="label-en">THE MANAGEMENT</th>
+                                    <td width="60%" class="text-center"></td>
+                                    <th class="label-ar text-end">الإدارة</th>
+                                </tr>
+                                <tr>
+                                    <th class="label-en">SALES MANAGER</th>
+                                    <td width="60%" class="text-center">NIDHAL SALEM</</td>
+                                    <th class="label-ar text-end">مديــر المبيعــات</th>
+                                </tr>
+                                <tr>
+                                    <th class="label-en">  VEHICLE OWNER </th>
+                                    <td width="60%" class="text-center"></</td>
+                                    <th class="label-ar text-end">مـــالك المركــبة</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- PAGE BREAK -->
+                <div class="page-break"></div>
+        
+                <!----------- SECOND PAGE  --------->
+                <header class="headerPrint text-center"> <img src="~/img/header1.png" /> </header>
+                <div class="page">
+                    <h3 class="text-center mb-5 mt-2">SERVICE CONTRACT FOR GMC VEHICLE (PAGE 2/2)</h3>
+                    <div class="row">
+                        <table class="table table-borderless" id="contractDetailsTable">
+                            <tbody>
+                                <tr>
+                                    <td class="label-en">Contract Reference:</td>
+                                    <td class="text-center"><strong>@Model.Reference ( @Model.AddedOn.ToString("dd-MM-yyyy") )</strong></td>
+                                    <td class="label-ar text-end">رقم العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">Customer:</td>
+                                    <td class="text-center"><strong>@ViewBag.CustomerName</strong></td>
+                                    <td class="label-ar text-end">العميل:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">TELEPHONE NO & ADRESS:</td>
+                                    <td class="text-center"><strong>@ViewBag.CustomerPhone (<small> @ViewBag.CustomerAddress </small>)</strong></td>
+                                    <td class="label-ar text-end">رقم الهاتف و العنوان:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">VEHICLE TYPE:</td>
+                                    <td class="text-center"><strong>@vehFullName</strong></td>
+                                    <td class="label-ar text-end"> نوع المركبة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">MODEL YEAR:</td>
+                                    <td class="text-center"><strong>@Model.ModelYear</strong></td>
+                                    <td class="label-ar text-end">سنة الصنع:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">VIN NO:</td>
+                                    <td class="text-center"><strong>@Model.VinNumber</strong></td>
+                                    <td class="label-ar text-end"> رقم القاعدة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">REGISTRATION NO:</td>
+                                    <td class="text-center"><strong>@Model.RegistrationNumber</strong></td>
+                                    <td class="label-ar text-end">رقم اللوحة:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">DELIVERY DATE:</td>
+                                    <td class="text-center"><strong>@Model.DeliveryDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">  تاريخ التسليم:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT SUBJECT:</td>
+                                    <td class="text-center"><strong>SERVICE PACKAGE FROM @Model.StartMileage TO @Model.EndMileage <br /><span dir="rtl">حزمة خدمة الصيانة الدورية من @Model.StartMileage إلى @Model.EndMileage </span></strong></td>
+                                    <td class="label-ar text-end"> موضوع العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT DURATION:</td>
+                                    <td class="text-center"><strong>@Model.ContractDuration @years_en (<span dir="rtl">@Model.ContractDuration @years_ar</span>)</strong></td>
+                                    <td class="label-ar text-end"> مدة العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT START DATE:</td>
+                                    <td class="text-center"><strong>@Model.StartDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">تاريخ بداية العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT EXPIRY DATE:</td>
+                                    <td class="text-center"><strong>@Model.ExpiryDate.ToString("dd-MM-yyyy")</strong></td>
+                                    <td class="label-ar text-end">تاريخ انتهاء العقد:</td>
+                                </tr>
+                                <tr>
+                                    <td class="label-en">CONTRACT TOTAL COST<small>(including parts if any)</small>:</td>
+                                    <td class="text-center"><strong><span class="small" dir="rtl">  د.ك  </span> @Model.TotalCost  <span class="small"> KD </span> </strong></td>
+                                    <td class="label-ar text-end">القيمة الإجمالية للعقد <small>(شاملة قطع الغيار إن وُجدت)</small>:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5><u>Service Contract Parts</u></h5>
+                        <h5><u>قطع الغيار الأساسية</u></h5>
+                    </div>
+                    <div class="row mt-1 mb-2">
+                        <table class="table small" id="contractDetailsSignature">
+                            <thead>
+                                <tr>
+                                    <th>Part Number<br/> رقم القطعة</th>
+                                    <th>Part Name<br/>اسم القطعة</th>
+                                    <th class="text-end">Unit Cost<br/>سعر القطعة</th>
+                                    <th class="text-center">Quantity<br/>الكمية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Parts.Count > 0)
+                                {
+                                    foreach (var part in Model.Parts)
+                                    {
+                                        <tr>
+                                            <td>@part.Part.PartNumber</td>
+                                            <td>@part.Part.PartName</td>
+                                            <td class="text-end">@part.UnitCost KD</td>
+                                            <td class="text-center">@part.Qty</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center">**** NO PARTS IN THIS SERVICE PACKAGE **** <span dir="rtl">    لم تتم إضافة قطع غيار لهذه الحزمة </span>  ****  </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5><u>Service Contract Additional Parts</u></h5>
+                        <h5><u>قطع الغيار الإضافية</u></h5>
+                    </div>
+                    <div class="row mt-1 mb-5">
+                        <table class="table small" id="contractDetailsSignature">
+                            <thead>
+                                <tr>
+                                    <th>Part Number<br /> رقم القطعة</th>
+                                    <th>Part Name<br />اسم القطعة</th>
+                                    <th class="text-end">Unit Cost<br />سعر القطعة</th>
+                                    <th class="text-center">Quantity<br />الكمية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Parts.Count > 0)
+                                {
+                                    foreach (var additionalPart in Model.AdditionalParts)
+                                    {
+                                        <tr>
+                                            <td>@additionalPart.PartNumber</td>
+                                            <td>@additionalPart.PartName</td>
+                                            <td class="text-end">@additionalPart.PartUnitCost KD</td>
+                                            <td class="text-center">@additionalPart.PartQty</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center">**** NO ADDITIONAL PARTS IN THIS SERVICE PACKAGE **** <span dir="rtl">    لا توجد قطع غيار إضافية لهذه الحزمة </span>  ****  </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row mt-5">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th>THE ADMINISTRATION</th>
+                                    <td width="60%" class="text-center"></td>
+                                    <th class="label-ar text-end">الإدارة</th>
+                                </tr>
+                                <tr>
+                                    <th class="label-en">SALES MANAGER</th>
+                                    <td width="60%" class="text-center">NIDHAL SALEM</</td>
+                                    <th class="label-ar text-end">مديــر المبيعــات</th>
+                                </tr>
+                                <tr>
+                                    <th class="label-en">  VEHICLE OWNER </th>
+                                    <td width="60%" class="text-center"></</td>
+                                    <th class="label-ar text-end">مـــالك المركــبة</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
+
+
+
+

@@ -1,0 +1,17 @@
+﻿@model GSP.Models.ViewModels.AddBrandRequest
+@{
+    ViewData["Title"] = "Add New Vehicle Brand";
+}
+
+<div class="container py-3">
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Brand Name</label>
+        <input type="text" class="form-control" id="name" asp-for="Name" required />
+    </div>
+
+    <div class="row d-sm-flex justify-content-center mt-3 ">
+        <button class="btn btn-sm btn-primary col-sm-6 " type="submit"><i class="fa fa-plus"></i> Add Brand</button>
+    </div>
+</form>
+</div>

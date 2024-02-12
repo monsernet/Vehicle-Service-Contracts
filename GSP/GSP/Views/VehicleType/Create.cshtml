@@ -1,0 +1,35 @@
+﻿@using GSP.Models.Domain;
+@model GSP.Models.Domain.VehicleType
+@{
+    ViewData["Title"] = "Create Vehicle Type";
+    var vehicles = ViewData["VehicleOptions"] as List<SelectListItem>;
+}
+
+
+<div class="container py-3">
+    <form asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="VehicleId">Vehicle</label>
+            <select asp-for="VehicleId" asp-items="@vehicles" class="form-control">
+                <option value="">-- Select Vehicle --</option>
+            </select>
+            <span asp-validation-for="VehicleId" class="text-danger"></span>
+        </div>
+       @*  <div class="form-group">
+            <label asp-for="VehicleId">Vehicle</label>
+            <select asp-for="VehicleId" class="form-control">
+                @foreach (var vehicle in vehicles)
+                {
+                    <option value="@vehicle.Id">@vehicle.Name</option>
+                }
+            </select>
+            <span asp-validation-for="VehicleId" class="text-danger"></span>
+        </div> *@
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

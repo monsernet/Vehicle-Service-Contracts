@@ -1,0 +1,45 @@
+﻿@model AuthSystem.Areas.Identity.Data.ApplicationUser
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container">
+    <form >
+        <div class="mb-3">
+            <label class="form-label">Id</label>
+            <input type="text" class="form-control"  asp-for="Id" disabled />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName" disabled />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" disabled />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" id="name" asp-for="Email" disabled />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" id="name" asp-for="UserName" disabled />
+        </div>
+
+        
+    </form>
+</div>
+
+@* <div>
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+
+        <dt class="col-sm-2">Username</dt>
+        <dd class="col-sm-10">@Model.UserName</dd>
+    </dl>
+</div> *@

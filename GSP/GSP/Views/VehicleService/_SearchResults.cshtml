@@ -1,0 +1,81 @@
+﻿@model List<GSP.Models.ViewModels.SearchVehicle>
+
+    @{
+        var submitResult = ViewBag.SearchSubmitted;
+    }
+
+@if (Model == null || !Model.Any())
+{
+    if (submitResult == true)
+    {
+        <div class="text-danger text-center"><h6><i class="fa fa-exclamation-triangle"></i> No vehicles found for the serached text ..</h6></div>
+    }
+}
+else
+{
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Customer Code</th>
+                <th>Customer Name</th>
+                <th>Model</th>
+                <th>Variant</th>
+                <th>Description</th>
+                <th>Purshasing Year</th>
+                @*  <th>Visit Date</th> *@
+                 <th>Delivery Date</th> 
+                <th>Vin</th>
+                @* <th>Service Adviser</th> *@
+                <th>Registration N#</th>
+                <th>Customer Tel</th>
+                <th>Email</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model)
+            {
+                <tr class="row-clickable">
+                    <td>@result.CustomerCode</td>
+                    <td>@result.Name</td>
+                    <td>@result.VehModel</td>
+                    <td>@result.Variant</td>
+                    <td>@result.VehDescription</td>
+                    <td>@result.PurshYear</td>
+                    @* <td>@result.RegDate</td> *@
+                    <td>@result.VehDeliveryDate</td>
+                    <td>@result.Vin</td>@* 
+                    <td>@result.ServiceAdviser</td> *@
+                    <td>@result.Licence</td>
+                    <td>@result.CustomerTel</td>
+                    <td>@result.Email</td>
+                    <td>
+                       @*  <a  class="btn btn-sm btn-secondary  select-btn" type="button"><i class="fa fa-arrow-right"></i> Select</a> *@
+                        <a asp-area=""
+                           class="btn btn-secondary btn-sm mr-2"
+                           asp-controller="VehicleService"
+                           asp-action="Search"
+                           asp-route-CustCode="@result.CustomerCode"
+                           asp-route-CustName="@result.Name"
+                           asp-route-VehModel="@result.VehModel"
+                           asp-route-VehVariant="@result.Variant"
+                           asp-route-VehDescription="@result.VehDescription"
+                           asp-route-VehDelivDate="@result.VehDeliveryDate"
+                           asp-route-PurYear="@result.PurshYear"
+                           asp-route-VehVin="@result.Vin"
+                           asp-route-VehReg="@result.Licence"
+                           asp-route-CustTel="@result.CustomerTel"
+                           asp-route-CustEmail="@result.Email">
+
+                            <i class="fa fa-arrow-right"></i> Select
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+    
+}

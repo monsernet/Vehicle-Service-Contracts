@@ -1,0 +1,28 @@
+﻿@model GSP.Models.ViewModels.AddCustomerRequest
+@{
+    ViewData["Title"] = "Add Bulk Customers";
+}
+
+<div class="container py-3">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data" asp-controller="Customer" asp-action="UploadExcel">
+        <div class="row">
+            
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="file">Choose Excel File</label>
+                    <input type="file" name="file" id="file" class="form-control" accept=".xlsx" required />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-sm btn-primary col-sm-6"><i class="fa fa-plus"></i>  Upload</button>
+            </div>
+        </div>
+    </form>
+    
+</div>

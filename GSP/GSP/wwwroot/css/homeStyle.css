@@ -1,0 +1,11 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/serviceback.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff; /* Set text color to white or light color for better visibility */
+}

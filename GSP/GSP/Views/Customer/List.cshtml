@@ -1,0 +1,95 @@
+﻿@* @using static GSP.Pagination; *@
+@model List<GSP.Models.Domain.Customer>
+
+
+@{
+    ViewData["Title"] = "List of Customers";
+}
+
+
+<div class="container-fluid py-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div id="printSection">
+            <form method="post">
+            <table class="table table-bordered" id="customerTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Customer Code</th>
+                        <th>Customer Name</th>
+                        <th>Phone</th>
+                        <th>Phone2</th>
+                        <th>Phone3</th>
+                        <th>Phone4</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        @if (User.IsInRole("Admin")) {
+                            <th width="10%">Action</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr>
+                            <td class="counter"></td>
+                            <td>@customer.CustomerCode</td>
+                            <td>@customer.CustomerName</td>
+                            <td>@(!string.IsNullOrEmpty(customer.Phone) && customer.Phone != "0" ?  customer.Phone : "")</td>
+                            <td>@(!string.IsNullOrEmpty(customer.Phone2) && customer.Phone2 != "0" ?  customer.Phone2 : "")</td>
+                            <td>@(!string.IsNullOrEmpty(customer.Phone3) && customer.Phone3 != "0" ?  customer.Phone3 : "")</td>
+                            <td>@(!string.IsNullOrEmpty(customer.Phone4) && customer.Phone != "0" ?   customer.Phone: "")</td>
+                            <td>@customer.Email</td>
+                            <td>@customer.Address</td>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <td>
+                                        <a asp-area=""
+                                        asp-controller="Customer"
+                                        asp-action="Edit"
+                                        asp-route-id="@customer.Id" class="btn btn-sm btn-primary mr-2 ml-2 mt-2"> <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a asp-area=""
+                                        asp-controller="Customer"
+                                        asp-action="Delete"
+                                        asp-route-id="@customer.Id" class="btn btn-sm btn-danger mr-2 ml-2 mt-2" onclick="return confirmDelete()">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                }
+                            </tr>
+                    }
+                </tbody>
+            </table>
+            </form>
+        </div>
+
+    }
+    else
+    {
+        <p> No Customers Found</p>
+    }
+</div>
+
+<script>
+    window.onload = function () {
+        var counterCells = document.querySelectorAll('.counter');
+        for (var i = 0; i < counterCells.length; i++) {
+            counterCells[i].innerText = i + 1;
+        }
+    };
+</script>

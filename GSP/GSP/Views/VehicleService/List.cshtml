@@ -1,0 +1,61 @@
+﻿@model List<GSP.Models.ViewModels.VehicleServiceViewModel>
+
+@{
+    ViewData["Title"] = "List of Service Rates";
+}
+
+<div class="container py-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered" id="serviceTable">
+            <thead>
+                <tr>
+                    
+                    <th>Service Name</th>
+                    <th>Cost</th>
+                    <th>Vehicle</th>
+                    <th>Vehicle Type</th>
+                    <th>Mileage</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Action</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var service in Model)
+                {
+                    <tr>
+                        
+                        <td>@service.Name</td>
+                        <td>@service.Cost KD</td>
+                        <td>@service.VehicleName</td>
+                        <td>@service.VehicleTypeName</td>
+                        <td>@service.MileageValue Km</td>
+                         @if (User.IsInRole("Admin")) {
+                        <td>
+                            <a asp-area=""
+                               asp-controller="VehicleService"
+                               asp-action="Edit"
+                               asp-route-id="@service.Id"> Edit</a>
+                        </td>
+                         }
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p> No Vehicles Found</p>
+    }
+</div>

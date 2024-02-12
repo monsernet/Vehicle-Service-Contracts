@@ -1,0 +1,32 @@
+﻿@model GSP.Models.ViewModels.SearchVehicleServiceViewModel
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container-fluid">
+        <h3>Seacrch Result  </h3>
+    </div>
+</div>
+
+@if (Model.SearchResults != null && Model.SearchResults.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Service Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var service in Model.SearchResults)
+            {
+                <tr>
+                    <td>@service.Name</td>
+                    <td>@service.Cost</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No results found.</p>
+}

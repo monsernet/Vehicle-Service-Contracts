@@ -1,0 +1,622 @@
+﻿@model GSP.Models.ViewModels.ServiceContractViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var userId = currentUser.Id;
+    var userFullName = currentUser.FirstName + ' ' + currentUser.LastName;
+
+    ViewData["Title"] = "New Quotation";
+    var rowCount = 0;
+}
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Search", "VehicleService", FormMethod.Post))
+    {
+        @if (ViewBag.SubmitStatus == false)
+        {
+         <div class="row">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header bg-gray">Vehicle Details</div>
+                    <div class="card-body">
+                        <div class="row">
+                               
+                            <div class="form-group col-sm-3">
+                                <input type="hidden" name="VehicleId" value="@ViewBag.CarId" />
+                                <label class="form-label">Vehicle Model</label>
+                                <input type="text" class="form-control" name="VehicleName" value="@ViewBag.VehModel" readonly />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Vehicle Variant</label>
+                                <input type="text" class="form-control" name="VehicleVariant" value="@ViewBag.VehVariant" readonly />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Vehicle Description</label>
+                                <textarea class="form-control" name="VehDescription"  readonly > @ViewBag.VehDescription </textarea>
+                            </div>
+                                <div class="form-group col-sm-3">
+                                    @Html.LabelFor(m => m.VehicleTypeId, "Vehicle Type ")
+                                    @Html.DropDownListFor(m => m.VehicleTypeId, (IEnumerable<SelectListItem>)ViewBag.VehicleTypes, "Select a Vehicle Type", new { @class = "form-control", required="required" })
+                                    @Html.ValidationMessageFor(m => m.VehicleTypeId)
+                                </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Purshasing Year</label>
+                                <input type="text" class="form-control" name="PurYear" value="@ViewBag.PurYear" readonly />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Delivery Date</label>
+                                    <input type="text" class="form-control" name="VehDelivDate" value="@ViewBag.VehDelivDate" readonly />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Registration N#</label>
+                                <input type="text" class="form-control" name="VehReg" value="@ViewBag.VehReg" readonly />
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">VIN N#</label>
+                                <input type="text" class="form-control" name="VehVin" value="@ViewBag.VehVin" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-gray">Customer Details</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-sm-3">
+                                <label class="form-label">Customer Code</label>
+                                <input type="text" class="form-control" name="CustCode" value="@ViewBag.CustCode" readonly />
+                            </div>
+                            <div class="form-group col-sm-9">
+                                <label class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" name="CustName" value="@ViewBag.CustName" readonly />
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-label">Customer Phone</label>
+                                <input type="text" class="form-control" name="CustTel" value="@ViewBag.CustTel" readonly />
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-label">Customer Email</label>
+                                <input type="text" class="form-control" name="CustEmail" value="@ViewBag.CustEmail" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+                
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    @Html.LabelFor(m => m.StartingMileageId, "From Mileage ")
+                    @Html.DropDownListFor(m => m.StartingMileageId, (IEnumerable<SelectListItem>)ViewBag.Mileages, "Select a Mileage", new { @class = "form-control", required="required" })
+                    @Html.ValidationMessageFor(m => m.StartingMileageId)
+                </div>
+                <div class="form-group col-sm-6">
+                    @Html.LabelFor(m => m.EndingMileageId, "To Mileage")
+                    @Html.DropDownListFor(m => m.EndingMileageId, (IEnumerable<SelectListItem>)ViewBag.Mileages, "Select a Mileage", new { @class = "form-control", required="required" })
+                    @Html.ValidationMessageFor(m => m.EndingMileageId)
+                </div>
+            </div>
+            <input type="hidden" name="IsSubmitted" value="@ViewBag.SubmitStatus" />
+            <div class="row d-sm-flex justify-content-center mt-3 ">
+                <button type="submit" class="btn btn-sm btn-primary col-sm-4"><i class="fa fa-search"></i> Proceed to Quotation Details </button>
+            </div>
+        }
+    }
+    @if (ViewBag.SubmitStatus == true)
+    {
+        if (!Model.VehiclePartsResults.Any())
+        {
+            <p class="text-danger"><i class="fa fa-exclamation-triangle"></i> There is no Service Packages added for the Vehicle Model <strong>@Model.VehicleName</strong> .</p>
+        }
+        else
+        {
+            if (Model.SearchResults != null && Model.SearchResults.Any())
+            {
+                decimal totalServiceCost = 0;
+                decimal totalCost = 0;
+                decimal allCosts = 0;
+                @using (Html.BeginForm("SaveContractDetails", "ServiceContract", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label asp-for="VehicleName">Vehicle</label>
+                            <input asp-for="VehicleName" class="form-control" value="@ViewBag.VehicleName" readonly />
+                            <input type="hidden" name="VehicleNamePosted" class="form-control" value="@ViewBag.VehicleName" />
+                            <input type="hidden" name="VehicleId" class="form-control" value="@ViewBag.VehicleId" />
+                            @* @Html.TextBoxFor(m => m.VehicleCaption, new { @class = "form-control", value="@ViewBag.VehicleName"  }) *@
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label asp-for="VehicleVariant">Vehicle Variant</label>
+                            <input asp-for="VehicleVariant" class="form-control" value="@ViewBag.VehVariant" readonly />
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label class="form-label">Vehicle Description</label>
+                            <textarea class="form-control" name="VehDescription" readonly> @ViewBag.VehDescription </textarea>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="hidden" name="VehicleTypeId" class="form-control" value="@Model.VehicleTypeId" />
+                            @Html.LabelFor(m => m.VehicleTypeId, "Vehicle Type ")
+                            @Html.DropDownListFor(m => m.VehicleTypeId, (IEnumerable<SelectListItem>)ViewBag.VehicleTypes, "Select a Vehicle Type", new { @class = "form-control", @disabled = "disabled" })
+                            @Html.ValidationMessageFor(m => m.VehicleTypeId)
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>From Mileage</label>
+                            <input class="form-control" value="@ViewBag.StartingMileageValue" readonly />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>To Mileage</label>
+                            <input class="form-control" value="@ViewBag.EndingMileageValue" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <!-- List of Service Costs  -->
+                        <div class="form-group col-md-4">
+                            <h6><u>Service Cost</u></h6>
+                            <div class="card">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Service Name</th>
+                                            <th>Service Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var service in Model.SearchResults)
+                                        {
+                                            totalServiceCost += service.Cost;
+                                            allCosts += service.Cost;
+
+                                            <tr>
+                                                <td>@service.Name</td>
+                                                <td>@service.Cost  KD</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="form-group">
+                                        <label class="text-primary">Before Disc.</label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="ServCostBefDisc" id="totalServiceCostBeforeDiscount" value="@($"{totalServiceCost}")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-primary">Disc.</label>
+                                        <div class="input-group">
+                                            <select class="form-control" name="DiscountServiceCost" id="DiscountServiceCost">
+                                                @for(int i=0;i<= 10; i++)
+                                                {
+                                                    <option value="@i">@i%</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-primary">After Disc.</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="totalServiceCost" value="@($"{totalServiceCost}")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- List of Parts     -->
+
+                        <div class="form-group col-md-8">
+                            <h6><u>Part Cost </u>:<span class="text-primary"> Please choose any relevant parts from the list below, if applicable</span></h6>
+                            <div class="card">
+                                <table class="table" id="SC_selected_parts">
+                                    <thead>
+                                        <tr>
+                                            <th>Part Number</th>
+                                            <th>Part Name </th>
+                                            <th>Unit Cost </th>
+                                            <th>Qty </th>
+                                            <th>Total Cost </th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var part in Model.VehiclePartsResults)
+                                        {
+
+
+                                            <tr>
+                                                <td>
+                                                    @part.PartNumber
+                                                    <input type="hidden" name="PartId[]" id="PartId_@rowCount" value="@part.Id" />
+                                                    <input type="hidden" name="checkedStatus[]" id="checkedStatus_@rowCount" class="checkedStatus" value="" />
+                                                </td>
+                                                <td>@part.PartName  </td>
+                                                <td>
+                                                    @part.UnitPrice KD
+                                                    <input type="hidden" name="UnitCost[]" id="UnitCost_@rowCount" value="@part.UnitPrice" />
+                                                </td>
+                                                <td>
+                                                    <input type="number" width="50px" name="PartQty[]" id="PartQty_@rowCount" class="quantityInput" value="1" min="1" />
+                                                </td>
+                                                <td class="totalCost">@part.UnitPrice KD </td>
+                                                <td><input type="checkbox" class="partCheckbox" data-unit-price="@part.UnitPrice" /></td>
+                                            </tr>
+                                            rowCount++;
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-end">
+                                    <div class="form-group col-6 mt-3">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-group">
+                                                <label class="text-primary">Before Disc.</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" id="totalPartCost" value="@($"{totalCost}")" readonly />
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KD</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">Disc.</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" name="DiscountPartCost" id="DiscountPartCost">
+                                                        @for (int i = 0; i <= 10; i++)
+                                                        {
+                                                            <option value="@i">@i%</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">After Disc.</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" id="totalPartCostAfterDiscount" value="@($"{totalCost}")" readonly />
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KD</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--   ***** MANUALLY PARTS *******-->
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-right">
+                                <h6><u>Additional Parts</u></h6>
+                                <button type="button" class="btn btn-sm btn-outline-primary float-end" id="manualParts">Add Parts Manually</button>
+                            </div>
+                            <div class="card-body">
+                                <table class="table " id="SC_manually_parts">
+                                    <thead>
+                                        <tr>
+                                            <th>Part Number</th>
+                                            <th>Part Name </th>
+                                            <th>Unit Cost </th>
+                                            <th>Qty </th>
+                                            <th>Total Cost </th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-8">
+
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-group">
+                                                <label class="text-primary">Before Disc.</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" id="totalManualCostBeforeDiscount" value="" readonly />
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KD</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">Disc.</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" name="DiscountManualCost" id="DiscountManualCost">
+                                                        @for (int i = 0; i <= 10; i++)
+                                                        {
+                                                            <option value="@i">@i%</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">After Disc.</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" id="totalManualCost" value="" readonly />
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">KD</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display of All the costs and the FINAL TOTAL-->
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="card bg-transparent border border-primary">
+                                            <div class="card-header bg-primary border-primary text-center text-primary"><h5>Service Cost</h5></div>
+                                            <div class="card-body text-center"><h5><span class="totalServiceAmount">@($"{totalServiceCost}") KD</span></h5></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card bg-transparent border border-primary">
+                                            <div class="card-header bg-primary border border-primary text-center text-primary"><h5>Parts Cost</h5></div>
+                                            <div class="card-body text-center"><h5><span class="totalPartsAmount">@($"{totalCost}") KD</span></h5></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card bg-transparent border border-primary">
+                                            <div class="card-header bg-primary border border-primary text-center text-primary"><h5>Additional Parts Cost</h5></div>
+                                            <div class="card-body text-center"><h5><span class="totalAdditionalAmount">0.000 KD</span></h5></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card bg-transparent border border-danger">
+                                            <div class="card-header bg-danger border border-danger text-center text-danger"><h5>Total Cost</h5></div>
+                                            <div class="card-body text-center"><h5><strong class="totalAmount">@($"{totalServiceCost + totalCost}") KD</strong></h5></div>
+                                            <input type="text" name="finalAmount" id="FinalAmount" value="@($"{totalServiceCost + totalCost}")" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!--   ***** END MANUALLY PARTS ********-->
+
+                    <div class="row">
+                        <!-- List of Service Costs  -->
+                        <div class="form-group col-md-4">
+                            <h6><u>Customer Information</u></h6>
+                            <div class="card">
+                                <div class="row">
+                                    <input type="hidden" name="TabPartsnumRows" value="@Model.VehiclePartsResults.Count">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label-sm">Customer Code</label>
+                                        <input type="text" class="form-control " name="CustCode" id="SC_CustomerCode" value="@ViewBag.CustCode" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label-sm">Customer Full Name</label>
+                                        <input type="text" class="form-control " name="CustName" id="SC_CustomerName" value="@ViewBag.CustName" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label-sm">Phone Number</label>
+                                        <input type="text" class="form-control " name="CustPhone" id="SC_Phone" value="@ViewBag.CustPhone" readonly />
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label-sm">Email</label>
+                                        <input type="text" class="form-control" name="CustEmail" id="SC_Phone" value="@ViewBag.CustEmail" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label-sm">Adress</label>
+                                        <textarea class="form-control" id="CustAddress" readonly></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- List of Parts     -->
+
+                        <div class="form-group col-md-8">
+                            <h6><u>Contract Details </u></h6>
+                            <div class="card">
+                                <div class="row m-2">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Contract Number</label>
+                                            <input type="text" class="form-control" value="@ViewBag.ContractCount" disabled />
+                                            <input type="hidden" class="form-control" value="@ViewBag.ContractCount" name="Reference" required="required" />
+                                            @* @Html.TextBoxFor(m => m.Reference, new { @class = "form-control", value="@ViewBag.ContractCount"  }) *@
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label class="form-label">Contract Caption</label>
+                                                <input type="text" class="form-control" value="@ViewBag.PackageCaption" disabled />
+                                                @* @Html.TextBoxFor(m => m.Reference, new { @class = "form-control", value="@ViewBag.ContractCount"  }) *@
+                                                <input type="hidden" class="form-control" value="@ViewBag.PackageCaption" name="SC_PackageCaption" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Starting Mileage</label>
+                                            <input type="text" class="form-control" value="@ViewBag.StartingMileageValue" readonly />
+                                            @*  @Html.TextBoxFor(m => m.StartMileage, new { @class = "form-control", value="@ViewBag.SC_startingMileage"  }) *@
+                                            <input type="hidden" class="form-control" value="@ViewBag.StartingMileageValue" name="StartMileage" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Ending Mileage</label>
+                                            <input type="text" class="form-control" value="@ViewBag.EndingMileageValue" readonly />
+                                            @*  @Html.TextBoxFor(m => m.EndMileage, new { @class = "form-control", value="@ViewBag.SC_endingMileage"  }) *@
+                                            <input type="hidden" class="form-control" value="@ViewBag.EndingMileageValue" name="EndMileage" required="required" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label">Vehicle Model</label>
+                                            <input type="text" class="form-control" value="@ViewBag.VehicleName" readonly />
+                                            <input type="hidden" class="form-control" value="@ViewBag.VehicleName" name="VehicleCaption" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="form-label">Vehicle Variant</label>
+                                            <input type="text" class="form-control" value="@ViewBag.VehVariant" readonly />
+                                            <input type="hidden" class="form-control" value="@ViewBag.VehVariant" name="VehicleVariant" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">VIN Number</label>
+                                            @* @Html.TextBoxFor(m => m.VinNumber, new { @class = "form-control"  }) *@
+                                            <input type="text" class="form-control" value="@ViewBag.VehVin" name="VinNumber" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Model Year</label>
+                                            @* @Html.TextBoxFor(m => m.ModelYear, new { @class = "form-control", type="number"  }) *@
+                                            <input type="number" class="form-control" value="@ViewBag.PurchaseYear" name="ModelYear" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Registration Number</label>
+                                            @* @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control"  }) *@
+                                            <input type="text" class="form-control" value="@ViewBag.VehReg" name="RegistrationNumber" readonly />
+                                        </div>
+                                    </div>
+                                    @{
+                                        DateTime delivDate = DateTime.Parse(ViewBag.VehDeliveryDate);
+                                    }
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Delivery Date</label>
+                                            @* @Html.TextBoxFor(m => m.DeliveryDate, new { @class = "form-control", type="date"  }) *@
+                                            <input type="date" class="form-control" value="@delivDate.ToString("yyyy-MM-dd")" name="DeliveryDate" raedonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-2">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Contract Duration</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control text-center" min="1" max="10" step="1" name="ContractDuration" id="SC_ContractDuration" onchange="calculateExpiryDate()" value="@ViewBag.ServedYears" required="required" readonly />
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"> Years</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @{
+                                        DateTime currentDate = ViewBag.CurrentDate;
+                                    }
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Contract Starting Date</label>
+                                            <input type="date" class="form-control" name="StartDate" id="SC_ContractStartingDate" value="@currentDate.ToString("yyyy-MM-dd")" required="required" readonly />
+                                        </div>
+                                    </div>
+                                    @{
+                                        DateTime expirationDate = ViewBag.ExpiryDate;
+                                    }
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="form-label">Contract Expiry Date</label>
+                                            <input type="date" class="form-control" name="ExpiryDate" id="SC_ContractExpiryDate" value="@expirationDate.ToString("yyyy-MM-dd")" required="required" readonly />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row d-sm-flex justify-content-center mt-3 ">
+                        <input type="hidden" id="PartsTableId" />
+                        <button type="submit" id="ServiceContractSubmit" class="btn btn-sm btn-primary mr-2 col-6"><i class="fa fa-arrow-right"></i>  Save Service Contract</button>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No results found.</p>
+            }
+        }
+        
+    }
+
+</div>
+<script>
+    function calculateExpiryDate() {
+        
+        var contractPeriod = document.getElementById("SC_ContractDuration").value;
+        var currentDate = document.getElementById("SC_ContractStartingDate").valueAsDate;
+
+        if (contractPeriod && currentDate) {
+            var expiryDate = new Date(currentDate);
+            expiryDate.setFullYear(expiryDate.getFullYear() + parseInt(contractPeriod));
+
+            // Format the date to match the input type="date" format (yyyy-MM-dd)
+            var formattedExpiryDate = expiryDate.toISOString().split('T')[0];
+
+            document.getElementById("SC_ContractExpiryDate").value = formattedExpiryDate;
+        }
+    }
+
+    // Passing the table Id to retreive table data 
+    // Set the hidden input field's value with the table ID
+    var tableId = document.getElementById('SC_selected_parts').getAttribute('id');
+    document.getElementById('PartsTableId').value = tableId;
+
+
+</script>
+

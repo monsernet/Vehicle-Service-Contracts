@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<AuthSystem.Areas.Identity.Data.ApplicationUser>
+
+<h1>User List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@user.Id">Details</a> |
+                    <a asp-action="ChangePassword" asp-route-id="@user.Id">Change Password</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

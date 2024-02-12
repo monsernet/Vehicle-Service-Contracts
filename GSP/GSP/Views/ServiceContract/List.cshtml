@@ -1,0 +1,97 @@
+﻿@model List<GSP.Models.ViewModels.ServiceContractViewModel>
+
+
+@{
+    ViewData["Title"] = "List of Service Contracts";
+}
+
+
+<div class="container-fluid py-3">
+
+    @if (!String.IsNullOrEmpty(ViewBag.MsrResult))
+    {
+        <div class="alert alert-success">
+            @ViewBag.MsrResult
+        </div>
+    }
+    
+   
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+   
+    @if (Model != null && Model.Any())
+    {
+        <div id="printSection">
+            <table class="table table-bordered" id="serviceContractTable">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Contr. Ref</th>
+                        <th>Vehicle</th>
+                        <th>Variant</th>
+                        <th>Year</th>
+                        <th>VIN</th>
+                        <th>Registration</th>
+                        <th>Sale Date</th>
+                        <th>From Mil.</th>
+                        <th>To Mil</th>
+                        <th>Duration</th>
+                        <th>Start Date</th>
+                        <th>Exp. Date</th>
+                        <th>Service Adviser</th>
+                        <th>Added On</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var contract in Model)
+                    {
+                        <tr>
+                            <td>@contract.CustomerName</td>
+                            <td>@contract.Reference </td>
+                            <td>@contract.VehicleCaption</td>
+                            <td>@contract.VehicleVariant</td>
+                            <td>@contract.ModelYear</td>
+                            <td>@contract.VinNumber</td>
+                            <td>@contract.RegistrationNumber</td>
+                            <td>@contract.DeliveryDate</td>
+                            <td>@contract.StartMileage</td>
+                            <td>@contract.EndMileage</td>
+                            <td>@contract.ContractDuration yrs</td>
+                            <td>@contract.StartDate.ToString("dd-MM-yyyy")</td>
+                            <td>@contract.ExpiryDate.ToString("dd-MM-yyyy")</td>
+                            <td>@contract.userFullName</td>
+                            <td>@contract.AddedOn.ToString("dd-MM-yyyy - H:s:m")</td>
+                            <td>
+                                <a asp-area=""
+                                   asp-controller="ServiceContract"
+                                   asp-action="Edit"
+                                   asp-route-id="@contract.Id"> Edit</a>
+                                <a asp-area=""
+                                   asp-controller="ServiceContract"
+                                   asp-action="PrintContract"
+                                   asp-route-id="@contract.Id"> Print</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    }
+    else
+    {
+        <p> No Service Contracts Found</p>
+    }
+</div>

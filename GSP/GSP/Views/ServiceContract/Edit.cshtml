@@ -1,0 +1,568 @@
+﻿@model GSP.Models.ViewModels.ServiceContractViewModel
+
+@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@{
+
+    ViewData["Title"] = "Edir Service Contract";
+    var rowCount = 0;
+    decimal totalServiceCost = 0;
+    decimal totalCost = 0;
+    decimal allCosts = 0;
+    decimal totalAdditinalPartsCost = 0;
+}
+
+<div class="container-fluid">
+    @* @if (!Model.VehiclePartsResults.Any())
+    {
+    <p class="text-danger"><i class="fa fa-exclamation-triangle"></i> An error occurred when extracting the details of the Service Contract.</p>
+    }
+    else
+    { *@
+   @*  @if (Model.SearchResults != null && Model.SearchResults.Any())
+    { *@
+        
+        @using (Html.BeginForm("UpdateContractDetails", "ServiceContract", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label asp-for="VehicleCaption">Vehicle</label>
+                <input asp-for="VehicleCaption" class="form-control" value="@Model.VehicleCaption" readonly />
+                <input type="hidden" name="EditContractId" class="form-control" value="@Model.Id" />
+                <input type="hidden" name="VehicleCaption" class="form-control" value="@Model.VehicleCaption" />
+                <input type="hidden" name="VehicleId" id="EditContractVehicleId" class="form-control" value="@Model.VehicleId" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="VehicleVariant">Vehicle Variant</label>
+                    <input asp-for="VehicleVariant" class="form-control" value="@Model.VehicleVariant" readonly />
+                </div>
+               @*  <div class="form-group col-sm-2">
+                    <label class="form-label">Vehicle Description</label>
+                    <textarea class="form-control" name="VehDescription" readonly> @Model.VehDescription </textarea>
+                </div> *@
+                <div class="form-group col-sm-2">
+                    <input type="hidden" name="VehTypeId" class="form-control" value="@Model.VehicleTypeId" />
+                    @Html.LabelFor(m => m.VehicleTypeId, "Vehicle Type ")
+                @Html.DropDownListFor(m => m.VehicleTypeId, (IEnumerable<SelectListItem>)ViewBag.VehicleTypes, "Select a Vehicle Type", new { @class = "form-control", @id ="changingVehicleType" })
+                    @Html.ValidationMessageFor(m => m.VehicleTypeId)
+                </div>
+                <div class="form-group col-sm-2">
+                    <input type="hidden" name="startMileageId"  class="form-control" value="@Model.StartingMileageId" />
+                    @Html.LabelFor(m => m.StartingMileageId, "Starting Mileage ")
+                    @Html.DropDownListFor(m => m.StartingMileageId, (IEnumerable<SelectListItem>)ViewBag.Mileages, "Select the starting mileage", new { @class = "form-control", @id ="changingStartingMileage"  })
+                    @Html.ValidationMessageFor(m => m.StartingMileageId)
+                </div>
+                <div class="form-group col-sm-2">
+                    <input type="hidden" name="endMileageId"  class="form-control" value="@Model.EndingMileageId" />
+                    @Html.LabelFor(m => m.EndingMileageId, "Ending Mileage ")
+                    @Html.DropDownListFor(m => m.EndingMileageId, (IEnumerable<SelectListItem>)ViewBag.Mileages, "Select the ending mileage", new { @class = "form-control", @id ="changingEndingMileage"  })
+                    @Html.ValidationMessageFor(m => m.EndingMileageId)
+                </div>
+            
+            </div>
+
+            <div class="row mt-4">
+                <!-- List of Service Costs  -->
+                <div class="form-group col-md-4">
+                    <h6><u>Service Cost</u></h6>
+                    <div class="card">
+                        <table class="table" id="ServiceContractMileagesTable">
+                            <thead>
+                                <tr>
+                                    <th>Service Name</th>
+                                    <th>Service Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var service in Model.SearchResults)
+                                {
+                                    totalServiceCost += service.Cost;
+                                    allCosts += service.Cost;
+
+                                    <tr>
+                                        <td>@service.Name</td>
+                                        <td>@service.Cost  KD</td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group">
+                                <label class="text-primary">Before Disc.</label>
+                                <div class="input-group">
+                                <input class="form-control" name="ServCostBefDisc" id="totalServiceCostBeforeDiscount" value="@($"{totalServiceCost.ToString("F3")}")" readonly />
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">KD</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-primary">Disc.</label>
+                                <div class="input-group">
+                                    <select class="form-control" name="DiscountServiceCost" id="DiscountServiceCost">
+                                        @for (int i = 0; i <= 10; i++)
+                                        {
+                                                    if (Model.ServDisc == i)
+                                                    {
+                                                        <option value="@i" selected>@i%</option>
+                                                    } else
+                                                    {
+                                                        <option value="@i">@i%</option>
+                                                    }
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            @{
+                            var totalServAfterDiscount = totalServiceCost * (1 - ((decimal)Model.ServDisc / 100));
+                            }
+                            <div class="form-group">
+                                <label class="text-primary">After Disc.</label>
+                                <div class="input-group">
+                                <input class="form-control" id="totalServiceCost" value="@($"{totalServAfterDiscount.ToString("F3")}")" readonly />
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">KD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- List of Parts     -->
+
+                <div class="form-group col-md-8">
+                    <h6><u>Part Cost </u>:<span class="text-primary"> Please choose any relevant parts from the list below, if applicable</span></h6>
+                    <div class="card">
+                        <table class="table" id="SC_selected_parts">
+                            <thead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>Part Name </th>
+                                    <th>Unit Cost </th>
+                                    <th>Qty </th>
+                                    <th>Total Cost </th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var part in Model.VehiclePartsResults)
+                                {
+                                
+                                decimal partCost = 0;
+                                var PartQty = 1;
+                                var isChecked = Model.ContractParts.Any(sp => sp.PartId == part.Id);
+                                if (isChecked)
+                                {
+                                    partCost = (decimal)part.UnitPrice * part.QtyPerSet;
+                                    totalCost = totalCost + partCost;
+                                    PartQty = part.QtyPerSet;
+
+                                }
+                                <tr>
+                                        <td>
+                                            @part.PartNumber
+                                            <input type="hidden" name="PartId[]" id="PartId_@rowCount" value="@part.Id" />
+                                            <input type="hidden" name="checkedStatus[]" id="checkedStatus_@rowCount" class="checkedStatus" value="" />
+                                        </td>
+                                        <td>@part.PartName  </td>
+                                        <td>
+                                            @part.UnitPrice KD
+                                            <input type="hidden" name="UnitCost[]" id="UnitCost_@rowCount" value="@part.UnitPrice" />
+                                        </td>
+                                        <td>
+                                            <input type="number" width="50px" name="PartQty[]" id="PartQty_@rowCount" class="quantityInput" value="@PartQty" min="1" />
+                                        </td>
+                                        <td class="totalCost">@part.UnitPrice KD </td>
+                                        <td><input type="checkbox" class="partCheckbox" data-unit-price="@part.UnitPrice" @(isChecked ? "checked" : "") /></td>
+                                    </tr>
+                                    rowCount++;
+                                }
+                            </tbody>
+                        </table>
+                        @* <div id="showCode"></div> *@
+                        <div class="d-flex justify-content-end">
+                            <div class="form-group col-6 mt-3">
+                            </div>
+                            <div class="form-group col-6">
+                                <div class="d-flex justify-content-between">
+                                    <div class="form-group">
+                                        <label class="text-primary">Before Disc.</label>
+                                        <div class="input-group">
+                                        <input class="form-control" id="totalPartCost" value="@($"{totalCost.ToString("F3")}")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-primary">Disc.</label>
+                                        <div class="input-group">
+                                            <select class="form-control" name="DiscountPartCost" id="DiscountPartCost">
+                                                @for (int i = 0; i <= 10; i++)
+                                                {
+                                                    if (Model.PartsDisc == i)
+                                                    {
+                                                        <option value="@i" selected>@i%</option>
+                                                    } else
+                                                    {
+                                                        <option value="@i">@i%</option>
+                                                    }
+
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                @{
+                                    decimal totalPartsAfterDiscount = totalCost * (1- (decimal)Model.PartsDisc/100);
+                                }
+                                    <div class="form-group">
+                                        <label class="text-primary">After Disc.</label>
+                                        <div class="input-group">
+                                        <input class="form-control" id="totalPartCostAfterDiscount" value="@($"{totalPartsAfterDiscount.ToString("F3")}")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--   ***** MANUALLY PARTS *******-->
+            <div class="row">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-right">
+                        <h6><u>Additional Parts</u></h6>
+                        <button type="button" class="btn btn-sm btn-outline-primary float-end" id="manualParts">Add Parts Manually</button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table " id="SC_manually_parts">
+                            <thead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>Part Name </th>
+                                    <th>Unit Cost </th>
+                                    <th>Qty </th>
+                                    <th>Total Cost </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var part in Model.AdditionalParts)
+                                {
+                                decimal totalPrice = part.PartUnitCost * part.PartQty;
+                                totalAdditinalPartsCost += totalPrice;
+                                <tr>
+                                        <td width="17%">
+                                            <input type="text" class="form-control" style="width: 100%; box - sizing: border - box; " name="ManualPartNumber[]" value="@part.PartNumber" required />
+                                        </td>
+                                        <td width="43%">
+                                            <input type="text" class="form-control" style="width: 100%; box-sizing: border-box;" name="ManualPartName[]" value="@part.PartName" required />
+                                        </td>
+                                        <td width="10%">
+                                            <input type="number"  style="width: 100%; box-sizing: border-box;" name="ManualUnitCost[]" class="form-control priceInputManual" min="0" step="0.001" value="@part.PartUnitCost" required />
+                                        </td>
+                                        <td width="7%">
+                                            <input type="number"  style="width: 100%; box-sizing: border-box;" name="ManualPartQty[]" class="form-control quantityInputManual" value="@part.PartQty" min="1" step="1" required />
+                                        </td>
+                                        <td width="10%" >
+                                            <input type="text" class="form-control totalCostManual" value="@totalPrice" readonly /> 
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-new-part-row" > <i class="fa fa-plus"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-part-row ml-1" > <i class="fa fa-trash"></i></button>
+                                        </td >
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-8">
+                            </div>
+                            <div class="col-4">
+                                <div class="d-flex justify-content-between">
+                                    <div class="form-group">
+                                        <label class="text-primary">Before Disc.</label>
+                                        <div class="input-group">
+                                        <input class="form-control" id="totalManualCostBeforeDiscount" value="@totalAdditinalPartsCost.ToString("F3")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-primary">Disc.</label>
+                                        <div class="input-group">
+                                            <select class="form-control" name="DiscountManualCost" id="DiscountManualCost">
+                                                @for (int i = 0; i <= 10; i++)
+                                                {
+                                                    if (Model.AddPartsDiscount == i)
+                                                    {
+                                                        <option value="@i" selected>@i%</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@i">@i%</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                @{
+                                    decimal totalAddPartsAfterDiscount = totalAdditinalPartsCost * (1 - (decimal)Model.AddPartsDiscount / 100);
+                                }
+                                    <div class="form-group">
+                                        <label class="text-primary">After Disc.</label>
+                                        <div class="input-group">
+                                        <input class="form-control" id="totalManualCost" value="@totalAddPartsAfterDiscount.ToString("F3")" readonly />
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">KD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Display of All the costs and the FINAL TOTAL-->
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="card bg-transparent border border-primary">
+                                    <div class="card-header bg-primary border-primary text-center text-primary"><h5>Service Cost</h5></div>
+                                <div class="card-body text-center"><h5><span class="totalServiceAmount">@($"{totalServAfterDiscount.ToString("F3")}") KD</span></h5></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card bg-transparent border border-primary">
+                                    <div class="card-header bg-primary border border-primary text-center text-primary"><h5>Parts Cost</h5></div>
+                                <div class="card-body text-center"><h5><span class="totalPartsAmount">@($"{totalPartsAfterDiscount.ToString("F3")}") KD</span></h5></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card bg-transparent border border-primary">
+                                <div class="card-header bg-primary border border-primary text-center text-primary"><h5>Additional Parts Cost</h5></div>
+                                <div class="card-body text-center"><h5><span class="totalAdditionalAmount">@($"{totalAddPartsAfterDiscount.ToString("F3")}") KD</span></h5></div>
+                                
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card bg-transparent border border-danger">
+                                    <div class="card-header bg-danger border border-danger text-center text-danger"><h5>Total Cost</h5></div>
+                                <div class="card-body text-center"><h5><strong class="totalAmount">@($"{(totalServAfterDiscount + totalPartsAfterDiscount + totalAddPartsAfterDiscount).ToString("F3")}") KD</strong></h5></div>
+                                <input type="text" name="finalAmount" id="FinalAmount" value="@($"{totalServAfterDiscount + totalPartsAfterDiscount + totalAddPartsAfterDiscount}")" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--   ***** END MANUALLY PARTS ********-->
+
+            <div class="row">
+                <!--Customer Information  -->
+                <div class="form-group col-md-4">
+                    <h6><u>Customer Information</u></h6>
+                    <div class="card">
+                        <div class="row">
+                            <input type="hidden" name="TabPartsnumRows" value="@Model.VehiclePartsResults.Count">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label-sm">Customer Code</label>
+                                <input type="text" class="form-control " name="CustCode" id="SC_CustomerCode" value="@Model.CustCode" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label-sm">Customer Full Name</label>
+                                <input type="text" class="form-control " name="CustName" id="SC_CustomerName" value="@Model.CustomerName" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label-sm">Phone Number</label>
+                                <input type="text" class="form-control " name="CustPhone" id="SC_Phone" value="@Model.CustPhone" readonly />
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label-sm">Email</label>
+                                <input type="text" class="form-control" name="CustEmail" id="SC_Phone" value="@Model.CustEmail" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label-sm">Adress</label>
+                                <textarea class="form-control" id="CustAddress" readonly>@Model.CustAddress</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contract Details     -->
+
+                <div class="form-group col-md-8">
+                    <h6><u>Contract Details </u></h6>
+                    <div class="card">
+                        <div class="row m-2">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Contract Number</label>
+                                    <input type="text" class="form-control" value="@Model.Reference" disabled />
+                                    <input type="hidden" class="form-control" value="@Model.Id" name="ContractId" id="ContractId" />
+                                    <input type="hidden" class="form-control" value="@Model.Reference" name="Reference" />
+                                    @* @Html.TextBoxFor(m => m.Reference, new { @class = "form-control", value="@ViewBag.ContractCount"  }) *@
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label class="form-label">Contract Caption</label>
+                                        <input type="text" class="form-control" value="@ViewBag.PackageCaption" disabled />
+                                        @* @Html.TextBoxFor(m => m.Reference, new { @class = "form-control", value="@ViewBag.ContractCount"  }) *@
+                                        <input type="hidden" class="form-control" value="@ViewBag.PackageCaption" name="SC_PackageCaption" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Starting Mileage</label>
+                                <input type="text" class="form-control" value="@Model.StartMileage" id="StartMileageCaption" readonly />
+                                    @*  @Html.TextBoxFor(m => m.StartMileage, new { @class = "form-control", value="@ViewBag.SC_startingMileage"  }) *@
+                                <input type="hidden" class="form-control" value="@Model.StartMileage" name="StartMileage" id="StartMileage" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Ending Mileage</label>
+                                    <input type="text" class="form-control" value="@Model.EndMileage" id="EndMileageCaption" readonly />
+                                    @*  @Html.TextBoxFor(m => m.EndMileage, new { @class = "form-control", value="@ViewBag.SC_endingMileage"  }) *@
+                                <input type="hidden" class="form-control" value="@Model.EndMileage" name="EndMileage" id="EndMileage" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Vehicle Model</label>
+                                    <input type="text" class="form-control" value="@Model.VehicleCaption" readonly />
+                                    <input type="hidden" class="form-control" value="@Model.VehicleCaption" name="VehicleCaption" />
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="form-label">Vehicle Variant</label>
+                                    <input type="text" class="form-control" value="@Model.VehicleVariant" readonly />
+                                    <input type="hidden" class="form-control" value="@Model.VehicleVariant" name="VehicleVariant" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">VIN Number</label>
+                                    @* @Html.TextBoxFor(m => m.VinNumber, new { @class = "form-control"  }) *@
+                                    <input type="text" class="form-control" value="@Model.VinNumber" name="VinNumber" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Model Year</label>
+                                    @* @Html.TextBoxFor(m => m.ModelYear, new { @class = "form-control", type="number"  }) *@
+                                    <input type="number" class="form-control" value="@Model.ModelYear" name="ModelYear" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Registration Number</label>
+                                    @* @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control"  }) *@
+                                    <input type="text" class="form-control" value="@Model.RegistrationNumber" name="RegistrationNumber" readonly />
+                                </div>
+                            </div>
+                            @{
+                                //DateTime delivDate = DateTime.Parse(Model.DeliveryDate);
+                            }
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Delivery Date</label>
+                                    @* @Html.TextBoxFor(m => m.DeliveryDate, new { @class = "form-control", type="date"  }) *@
+                                            <input type="date" class="form-control" value="@Model.DeliveryDate.ToString("yyyy-MM-dd")" name="DeliveryDate" raedonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Contract Duration</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control text-center" min="1" max="10" step="1" name="ContractDuration" id="SC_ContractDuration" onchange="calculateExpiryDate()" value="@Model.ContractDuration" required="required" readonly />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"> Years</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @{
+                                //DateTime currentDate = ViewBag.CurrentDate;
+                            }
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Contract Starting Date</label>
+                                    <input type="date" class="form-control" name="StartDate" id="SC_ContractStartingDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" required="required" readonly />
+                                </div>
+                            </div>
+                            @{
+                                //DateTime expirationDate = ViewBag.ExpiryDate;
+                            }
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">Contract Expiry Date</label>
+                                    <input type="date" class="form-control" name="ExpiryDate" id="SC_ContractExpiryDate" value="@Model.ExpiryDate.ToString("yyyy-MM-dd")" required="required" readonly />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row d-sm-flex justify-content-center mt-3 ">
+                <input type="hidden" id="PartsTableId" />
+                <button type="submit" id="ServiceContractUpdate" class="btn btn-sm btn-primary mr-2 col-6"><i class="fa fa-arrow-right"></i>  Update Service Contract</button>
+            @* <a asp-area=""
+               asp-controller="ServiceContract"
+               asp-action="List"
+               asp-route-msrResult="$0iTl52Y3d12b92dSOn56v7W2_yy!48P019GcxTT-HyT18aNOsp" class="btn btn-sm btn-primary"> Update Service Contract</a> *@
+            </div>
+        }
+    @* } *@
+    @* else
+    {
+    <p>No results found.</p>
+    } *@
+   @*  } *@
+</div>

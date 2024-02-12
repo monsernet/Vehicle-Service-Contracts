@@ -1,0 +1,36 @@
+﻿@model GSP.Models.ViewModels.EditMileageRequest
+@{
+    ViewData["Title"] = "Edit Mileage";
+}
+
+<div class="container py-3">
+    <form method="post">
+        <div class="form-group">
+            <label class="form-label">Id</label>
+            <input type="text" id="id" class="form-control" asp-for="Id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Designation</label>
+            <input type="text" id="name" class="form-control" asp-for="Name" required />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Mileage Value (Km)</label>
+            <div class="input-group">
+                <input type="number" id="mileagevalue" class="form-control" asp-for="MileageValue" required step="0.001" min="0" />
+                <div class="input-group-append">
+                    <span class="input-group-text">Km</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-sm-flex justify-content-center mt-3 ">
+            <button type="submit" class="btn btn-sm btn-success col-sm-3 mr-2 ml-2 mt-2"><i class="fa fa-retweet"></i> Update</button>
+            <button type="submit" class="btn btn-sm btn-danger col-sm-3 mr-2 ml-2 mt-2"
+                        asp-area=""
+                        asp-controller="Mileage"
+                        asp-action="Delete">
+                <i class="fa fa-trash"></i> Delete
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,425 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - GMC Service Contracts </title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/GSP.styles.css" asp-append-version="true" />
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="~/lib/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/css/adminlte.min.css">
+<!-- Datatables-->
+<link rel="stylesheet" href="~/lib/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/lib/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="~/lib/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+   
+
+    @if (ViewContext.RouteData.Values.TryGetValue("controller", out var controllerValue) &&
+    ViewContext.RouteData.Values.TryGetValue("action", out var actionValue) &&
+    controllerValue?.ToString().ToLower() == "home" &&
+    actionValue?.ToString().ToLower() == "index")
+    {
+        <link rel="stylesheet" href="~/css/homeStyle.css" />
+    }
+</head>
+<body class="hold-transition layout-top-nav layout-navbar-fixed txt-sm">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-black">
+            <div class="container-fluid">
+
+                <img src="~/img/gmcLogo.jpg" alt="GMC Service Contracts" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GMC Service Contracts</a>
+                
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                   
+                        <ul class="navbar-nav flex-grow-1">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Vehicles
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="Vehicle"
+                                            asp-action="Add">
+                                                Add New Vehicle
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="Vehicle"
+                                        asp-action="List">
+                                            List of Vehicles
+                                        </a>
+                                    </li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="VehicleType"
+                                            asp-action="Create">
+                                                Add New Vehicle Type
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="VehicleType"
+                                        asp-action="Index">
+                                            List of Vehicle Types
+                                        </a>
+                                    </li>
+                                    <!-- MILEAGES -->
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="Mileage"
+                                        asp-action="Add">
+                                            Add New Mileage
+                                        </a>
+                                    </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="Mileage"
+                                        asp-action="List">
+                                            List of Mileages
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Service Rates
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="VehicleService"
+                                            asp-action="Add">
+                                                Add New Service Rate
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="VehicleService"
+                                        asp-action="List">
+                                            List of Services
+                                        </a>
+                                    </li>
+                                  
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Genium Parts
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="GeniumPart"
+                                            asp-action="Add">
+                                                Add New Service Part
+                                            </a>
+                                        </li>
+                                    
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="GeniumPart"
+                                            asp-action="UploadExcel">
+                                                Add Bulk Service Parts
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="GeniumPart"
+                                        asp-action="List">
+                                            List of Parts
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Customers
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="Customer"
+                                            asp-action="Add">
+                                                Add New Customer
+                                            </a>
+                                        </li>
+                                    }
+                                     @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="Customer"
+                                            asp-action="UploadExcel">
+                                                Add Bulk Customers
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="Customer"
+                                        asp-action="List">
+                                            List of Customers
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Service Contracts
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item"
+                                            asp-area=""
+                                            asp-controller="VehicleService"
+                                               asp-action="SearchVehicle">
+                                                 New Quotation
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="ServiceContract"
+                                           asp-action="QuotationList">
+                                            List of Quotations
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                        asp-area=""
+                                        asp-controller="ServiceContract"
+                                        asp-action="List">
+                                            List of Service Contracts
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  USERS -->
+                            @if (User.IsInRole("Admin"))
+                            {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Users
+                                </a>
+                                <ul class="dropdown-menu">
+                                    
+                                        <li>
+                                            <a class="dropdown-item"
+                                               asp-area=""
+                                               asp-controller="User"
+                                               asp-action="List">
+                                                List of Users
+                                            </a>
+                                        </li>
+                                    
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="User"
+                                           asp-action="AddUser">
+                                            Add New User
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            }
+                            <!--  REPORTS -->
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Reports
+                                    </a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a class="dropdown-item"
+                                               asp-area=""
+                                               asp-controller="ServiceContractReports"
+                                               asp-action="ServiceContractReports">
+                                                General Reports
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a class="dropdown-item"
+                                               asp-area=""
+                                               asp-controller="ServiceContractReports"
+                                               asp-action="UserReports">
+                                                User Reports
+                                            </a>
+                                        </li>
+
+                                        
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        </ul>
+                   
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+           
+        </nav>
+    </div>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        @if (!(ViewContext.RouteData.Values.TryGetValue("controller", out var controllerValue1) &&
+              ViewContext.RouteData.Values.TryGetValue("action", out var actionValue1) &&
+              controllerValue1?.ToString().ToLower() == "home" &&
+              actionValue1?.ToString().ToLower() == "index"))
+        {
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h5 class="m-0"> @ViewData["Title"]</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right small">
+                            @if (!string.IsNullOrEmpty(ViewData["navItem1"]?.ToString()))
+                            {
+                                <li class="breadcrumb-item">@ViewData["navItem1"]</li>
+                            }
+                            @if (!string.IsNullOrEmpty(ViewData["navItem2"]?.ToString()))
+                            {
+                                <li class="breadcrumb-item">@ViewData["navItem2"]</li>
+                            }
+                            @if (!string.IsNullOrEmpty(ViewData["navItem3"]?.ToString()))
+                            {
+                                <li class="breadcrumb-item active">@ViewData["navItem3"]</li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card  login-container">
+                            @* stretch="true" *@
+                            <div class="card-body">
+                                <p class="card-text h-100">
+                                    <main role="main" class="pb-3 text-sm">
+                                        @RenderBody()
+                                    </main>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+        } else
+        {
+            @RenderBody()
+        }
+    </div>
+    @if (!(ViewContext.RouteData.Values.TryGetValue("controller", out var controllerValue2) &&
+                    ViewContext.RouteData.Values.TryGetValue("action", out var actionValue2) &&
+                    controllerValue2?.ToString().ToLower() == "home" &&
+                    actionValue2?.ToString().ToLower() == "index"))
+        {
+            <aside class="control-sidebar control-sidebar-dark">
+            </aside>
+            <footer class="main-footer small">
+                <div class="float-right d-none d-sm-inline">
+                    GMC Service Contracts
+                </div>
+                <strong>Copyright &copy; 2023 <a href="https://ebehbehani.com" target="_blank">MSRY Behbehani</a>.</strong> All rights reserved.
+            </footer>
+        }
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- AdminLTE App -->
+    <script src="~/js/adminlte.min.js"></script>
+    <!-- Include jsPDF library -->
+    <script src="~/lib/jspdf/jspdf.umd.min.js"></script>
+    <!-- Include html2canvas library -->
+    <script src="~/lib/html2canvas/html2canvas.min.js"></script>
+    <!-- Include html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/lib/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/jszip/jszip.min.js"></script>
+    <script src="~/lib/pdfmake/pdfmake.min.js"></script>
+    <script src="~/lib/pdfmake/vfs_fonts.js"></script>
+    <script src="~/lib/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatables-buttons/js/buttons.colVis.min.js"></script>
+    
+    <!-- JS Scripts -->
+    <script src="~/js/scripts.js"></script>
+    
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

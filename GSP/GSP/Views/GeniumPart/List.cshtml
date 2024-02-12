@@ -1,0 +1,69 @@
+﻿@* @using static GSP.Pagination; *@
+@model List<GSP.Models.ViewModels.GeniumPartViewModel>
+
+
+@{
+    ViewData["Title"] = "List of Service Parts";
+}
+
+
+<div class="container py-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @* <button class="btn btn-sm btn-dark mb-3" onclick="printTable()"><i class="fa fa-print"></i> Print Table</button> *@
+
+    @if (Model != null && Model.Any())
+    {
+        <div id="printSection">
+            <table class="table table-bordered" id="partTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Part Number</th>
+                        <th>Part Name</th>
+                        <th>Unit Price</th>
+                        <th>Pcs per Set</th>
+                        <th>Vehicle</th>
+                        <th>Vehicle Type</th>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <th>Action</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var part in Model)
+                    {
+                        <tr>
+                            <td>@part.Id</td>
+                            <td>@part.PartNumber</td>
+                            <td>@part.PartName</td>
+                            <td class="">@part.UnitPrice KD</td>
+                            <td>@part.QtyPerSet</td>
+                            <td>@part.VehicleName</td>
+                            <td>@part.VehicleTypeName</td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <td>
+                                    <a asp-area=""
+                                    asp-controller="GeniumPart"
+                                    asp-action="Edit"
+                                    asp-route-id="@part.Id"> Edit</a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    }
+    else
+    {
+        <p> No Parts Found</p>
+    }
+</div>
